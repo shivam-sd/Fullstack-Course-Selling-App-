@@ -97,7 +97,7 @@ async function CourseDelete(req, res) {
 async function AllCourses(req, res) {
   try {
     const courses = await coursemodel.find();
-    console.log(courses.length)
+    // console.log(courses.length)
     return res.status(200).json({ courses });
   } catch (error) {
     console.error("Error fetching courses:", error);

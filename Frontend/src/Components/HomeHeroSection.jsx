@@ -67,12 +67,12 @@ const HomeHeroSection = () => {
           Sharpen your skills with courses crafted by experts.
         </p>
         <div className="flex items-center justify-center gap-5 mt-3">
-          <button className="border border-white p-2 rounded-sm mt-3 bg-green-700 text-white hover:bg-white hover:text-black duration-300 text-lg font-serif">
+          <Link to="/courses" className="border border-white p-2 rounded-sm mt-3 bg-green-700 text-white hover:bg-white hover:text-black duration-300 text-lg font-serif">
             Explore Courses
-          </button>
-          <button className="border-2 border-black p-2 rounded-sm mt-3 bg-white text-black hover:bg-green-700 hover:text-white  duration-300 text-lg font-serif">
+          </Link>
+          <Link to="" className="border-2 border-black p-2 rounded-sm mt-3 bg-white text-black hover:bg-green-700 hover:text-white  duration-300 text-lg font-serif">
             Courses Videos
-          </button>
+          </Link>
         </div>
       </div>
 
