@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast, Bounce } from "react-toastify";
-import { Link, useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const AdminLogin = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [LoginData, setLoginData] = useState([]);
   const [error, seterror] = useState();
   const [isLoggedin, setisLoggedin] = useState(false);
-const navigate = useNavigate();
+ 
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Admintoken");
     if (token) {
       // console.log(token)
       setisLoggedin(true);
@@ -34,7 +35,7 @@ const navigate = useNavigate();
       console.log(LoginData);
 
       const response = await axios.post(
-        `http://localhost:3000/users/login`,
+        `http://localhost:3000/admin/login`,
         LoginData,
         {
           headers: {
@@ -46,7 +47,6 @@ const navigate = useNavigate();
       const data = response.data;
       console.log(response);
      localStorage.setItem("token", JSON.stringify(response.data.token));
-     navigate("/courses");
       toast.success(`${response.data.message}`, {
         position: "top-right",
         autoClose: 5000,
@@ -58,6 +58,7 @@ const navigate = useNavigate();
         theme: "light",
         transition: Bounce,
       });
+      navigate("/admin/dashboard");
     } catch (error) {
       console.log(error);
       if (error.response.data.errors) {
@@ -71,10 +72,8 @@ const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/logout`);
+      const response = await axios.get(`http://localhost:3000/admin/logout`);
       console.log(response);
-      localStorage.removeItem("token");
-      navigate("/login");
       toast.success(`${response.data.message}`, {
         position: "top-right",
         autoClose: 5000,
@@ -121,7 +120,7 @@ const navigate = useNavigate();
           ) : (
             <>
              <Link
-               to="/signup"
+               to="/admin/signup"
                 className="lg:text-xl lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-500  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white"
               >
                 Signup
@@ -145,11 +144,11 @@ const navigate = useNavigate();
             <span className="text-orange-500 font-serif">CourseHaven</span>
           </h1>
           <p className="text-sm text-gray-300 mt-1 text-center font-serif tracking-wide">
-            Login to access paid courses.
+            Login to mess Dashboard.
           </p>
           <form onSubmit={handleSignupData} className="flex flex-col">
             <label htmlFor="email" className="text-gray-100 text-md mt-2 ml-1">
-              Email
+              Admin Email
             </label>
             <input
               type="email"
@@ -163,7 +162,7 @@ const navigate = useNavigate();
               htmlFor="password"
               className="text-gray-100 text-md mt-2 ml-1"
             >
-              Password
+              Admin Password
             </label>
             <input
               type="password"
@@ -186,4 +185,4 @@ const navigate = useNavigate();
   );
 };
 
-export default Login;
+export default AdminLogin;

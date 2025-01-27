@@ -10,6 +10,7 @@ const port = process.env.PORT || 4000;
 const CourseRouter = require("./routes/course.router");
 const UserRouter = require("./routes/user.router");
 const AdminRouter = require("./routes/admin.route");
+const orderRouter = require("./routes/order.route");
 
 ConnectToDB();
 
@@ -35,6 +36,7 @@ app.get("/", (req,res) => {
 app.use("/courses" , CourseRouter);
 app.use("/users" , UserRouter);
 app.use("/admin",AdminRouter);
+app.use("/order",orderRouter);
 
 //cloudnary confugation code
 cloudinary.config({ 

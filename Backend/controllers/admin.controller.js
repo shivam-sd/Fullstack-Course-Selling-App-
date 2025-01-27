@@ -19,11 +19,11 @@ const AdminSignup = async (req, res) => {
       });
 
       const token = jwt.sign({ email: email }, process.env.ADMIN_JWT_SECRET);
-      res.cookie("Adminjwt", token);
+      res.cookie("AdminToken", token);
 
       return res
         .status(201)
-        .json({ message: "Admin Successfully Created", newAdmin });
+        .json({ message: "Admin Successfully Created", newAdmin , token });
     });
   } catch (error) {
     console.log("Error in Signup", error);
@@ -61,7 +61,7 @@ const AdminLogin = async (req, res) => {
     };
 
     // Set the cookie
-    res.cookie("Adminjwt", token, cookieOptions);
+    res.cookie("AdminToken", token, cookieOptions);
 
     // Respond with success
     res.status(200).json({ message: "Admin Successfully Logged In" , admin , token });
@@ -76,7 +76,7 @@ const AdminLogout =  (req,res) => {
         if(!req.headers.cookie){
             return res.status(200).json({message:"First login"});
         }
-        res.clearCookie("Adminjwt");
+        res.clearCookie("AdminToken");
         res.status(200).json({message:"Admin Successfully Logout"});
     }catch(error){
         console.log("Error In logout" , error);
