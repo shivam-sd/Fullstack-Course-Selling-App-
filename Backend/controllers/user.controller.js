@@ -31,7 +31,7 @@ const signup = async (req, res) => {
 
       // genrate token user register time
       const token = jwt.sign({email:email} , process.env.JWT_SECRET);
-      res.cookie("user" , token);
+      res.cookie("token" , token);
       return res.status(201).json({ message: "Signup Successddd", newUser , token});
     });
   } catch (error) {
@@ -57,7 +57,7 @@ const login = async (req, res) => {
       }
   
       // Generate token with the help of JWT
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET , {expiresIn : "24h"});
+      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
       const cookieOptions = {
         expiresIn : new Date(Date.now() + 24*60 *60 * 1000), // 1 day
@@ -67,7 +67,7 @@ const login = async (req, res) => {
       }
   
       // Set the token in cookies (httpOnly for security)
-      res.cookie("user", token , cookieOptions);
+      res.cookie("token", token , cookieOptions);
   
       // Respond with success message
       return res.status(200).json({ message: "User Successfully Logged In" , user , token});
@@ -81,7 +81,7 @@ const login = async (req, res) => {
 const logout = async (req,res) => {
     try{
         // res.clearCookie("user");
-        res.clearCookie('user', { path: '/' })
+        res.clearCookie('token', { path: '/' })
         res.status(200).json({message:"Logged out successfully"});
     }catch(error){
         res.status(500).json({error:"Error in Logout"});

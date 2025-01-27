@@ -36,7 +36,7 @@ const Signup = () => {
 
       const data = response.data;
       console.log(response);
-      localStorage.setItem("user", JSON.stringify(response.data.token))
+      localStorage.setItem("token", JSON.stringify(response.data.token))
       toast.success(`${response.data.message}`, {
         position: "top-right",
         autoClose: 5000,

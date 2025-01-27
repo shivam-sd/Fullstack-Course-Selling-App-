@@ -122,6 +122,9 @@ async function CourseDetails(req, res) {
   }
 }
 
+const Stripe = require("stripe");
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+console.log(stripe)
 
 async function CourseBuy(req, res) {
   const userId = req.userId; // यूजर आईडी को `req` से प्राप्त करना
@@ -139,6 +142,18 @@ async function CourseBuy(req, res) {
     if (existingPurchase) {
       return res.status(400).json({ errors: "User already purchased this course" });
     }
+    
+    const amount = course.price;
+    // Payment integration with the help of Strip
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: "usd",
+      // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+
 
     // यदि कोर्स पहले नहीं खरीदा गया है, तो नया खरीदारी रिकॉर्ड बनाएं
     const newPurchase = await PurchaseModel.create({
@@ -147,7 +162,8 @@ async function CourseBuy(req, res) {
     });
 
     // सफल खरीदारी का उत्तर भेजें
-    return res.status(200).json({ message: "Course purchased successfully" , newPurchase });
+    return res.status(200).json({ message: "Course purchased successfully" ,
+     course, clientSecret:paymentIntent.client_secret , newPurchase });
   } catch (error) {
     // एरर को हैंडल करें और लॉग करें
     console.error("Error in Course Buying", error);
