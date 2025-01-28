@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axios from "axios";
 
@@ -62,8 +62,8 @@ const AdminCourseCreate = () => {
     <div>
       <div className="min-h-screen  py-10">
         <div className="max-w-4xl mx-auto p-6 border  rounded-lg shadow-lg">
-          <h3 className="text-2xl font-semibold mb-8">Create Course</h3>
-
+          <Link to="/admin/dashboard" className="text-2xl font-semibold mb-8">Create Course &nbsp;&nbsp; Dashboard</Link>
+      
           <form onSubmit={handleCreateCourse} className="space-y-6">
             <div className="space-y-2">
               <label className="block text-lg">Title</label>

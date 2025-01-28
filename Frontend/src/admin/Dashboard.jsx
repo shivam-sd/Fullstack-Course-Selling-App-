@@ -20,9 +20,9 @@ function Dashboard() {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      <div className="w-64 bg-gray-100 p-5">
-        <div className="flex items-center flex-col mb-10">
-          <img src={<RiAdminFill />} alt="Profile" className="rounded-full h-20 w-20" />
+      <div className="w-64 bg-gray-100 p-5 z-10">
+        <div className="flex items-center justify-center mb-10 gap-3">
+          <RiAdminFill  className="rounded-full h-6 w-6 mt-4" />
           <h2 className="text-lg font-semibold mt-4">I'm Admin</h2>
         </div>
         <nav className="flex flex-col space-y-4">
@@ -53,7 +53,7 @@ function Dashboard() {
         </nav>
       </div>
       <div className="flex h-screen items-center justify-center ml-[40%]">
-        Welcome!!!
+       <video src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/admin-panel-animated-icon-download-in-lottie-json-gif-static-svg-file-formats--administration-management-control-dashboard-interface-3d-printing-pack-science-technology-icons-9802915.mp4" alt="Admin Dashboard" className="absolute z-0 max-h-96" />
       </div>
     </div>
   );

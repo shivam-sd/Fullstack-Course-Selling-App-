@@ -10,7 +10,7 @@ const Login = () => {
   const [LoginData, setLoginData] = useState([]);
   const [error, seterror] = useState();
   const [isLoggedin, setisLoggedin] = useState(false);
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -45,8 +45,8 @@ const navigate = useNavigate();
 
       const data = response.data;
       console.log(response);
-     localStorage.setItem("token", JSON.stringify(response.data.token));
-     navigate("/courses");
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      navigate("/courses");
       toast.success(`${response.data.message}`, {
         position: "top-right",
         autoClose: 5000,
@@ -98,41 +98,17 @@ const navigate = useNavigate();
 
       <div className="main lg:flex lg:items-center lg:justify-between lg:container lg:mx-auto lg:p-5 flex items-center justify-between p-3 pt-5">
         <div className="left lg:flex lg:items-center lg:justify-center lg:gap-3 flex items-center justify-center gap-3">
-        
           <h1 className="lg:text-3xl lg:text-orange-500 lg:font-serif text-2xl text-orange-500 font-serif">
             CourseHaven
           </h1>
         </div>
 
         <div className="right lg:flex lg:items-center lg:justify-center lg:gap-6 flex justify-center items-center gap-5">
-          {isLoggedin ? (
-            <>
-              <button
-                onClick={handleLogout}
-                className="lg:text-xl lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-500  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white"
-              >
-                Logout
-              </button>
-
-              <button className="lg:text-md md:text-sm lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-auto hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-300 text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-16 text-center text-white bg-orange-500">
-                Join now
-              </button>
-            </>
-          ) : (
-            <>
-             <Link
-               to="/signup"
-                className="lg:text-xl lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-500  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white"
-              >
-                Signup
-              </Link>
-
-              <button className="lg:text-md md:text-sm lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-auto hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-300 text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-16 text-center text-white bg-orange-500">
-                Join now
-              </button>
-            </>
-
-          )}
+          <Link to="/"
+            className="lg:text-xl lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-500  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white"
+          >
+            Home
+          </Link>
         </div>
       </div>
 
@@ -145,7 +121,7 @@ const navigate = useNavigate();
             <span className="text-orange-500 font-serif">CourseHaven</span>
           </h1>
           <p className="text-sm text-gray-300 mt-1 text-center font-serif tracking-wide">
-            Login to access paid courses.
+            USER:- &nbsp; Login to access paid courses.
           </p>
           <form onSubmit={handleSignupData} className="flex flex-col">
             <label htmlFor="email" className="text-gray-100 text-md mt-2 ml-1">
@@ -174,6 +150,10 @@ const navigate = useNavigate();
               className="w-72 rounded-sm p-1 text-black text-lg outline-none"
             />
             <p className="text-red-300 mt-1 text-center">{error}</p>
+            <Link to="/signup" className="text-sm flex mx-auto text-white">
+              you have no account :- &nbsp;{" "}
+              <p className="text-sm text-blue-500 underline ">User Signup</p>
+            </Link>
             <input
               type="submit"
               value="Login"

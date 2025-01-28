@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import HomeHeader from "../Components/HomeHeader";
 import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from "react-toastify";
+import SignupHead from "./SignupHead";
 
 const Signup = () => {
   const [firstname, setfirstname] = useState("");
@@ -10,6 +12,8 @@ const Signup = () => {
   const [password, setpassword] = useState("");
   const [signupData, setsignupData] = useState([]);
   const [error , seterror] = useState();
+
+  const navigate = useNavigate();
 
   const handleSignupData = async (e) => {
     e.preventDefault();
@@ -37,6 +41,7 @@ const Signup = () => {
       const data = response.data;
       console.log(response);
       localStorage.setItem("token", JSON.stringify(response.data.token))
+      navigate("/courses");
       toast.success(`${response.data.message}`, {
         position: "top-right",
         autoClose: 5000,
@@ -61,7 +66,7 @@ const Signup = () => {
 
   return (
     <div className="bg-gradient-to-r from-black to-blue-900 h-screen">
-      <HomeHeader />
+      <SignupHead />
       <div className="lg:mt-7 container mx-auto p-1 flex items-center justify-center mt-8 ">
         <div className="form-main border border-yellow-500 p-4 w-auto rounded-md bg-gradient-to-tr from-yellow-900 to-blue-950">
           <h1 className="text-xl text-center font-bold duration-300 text-white">
@@ -69,7 +74,7 @@ const Signup = () => {
             <span className="text-orange-500 font-serif">CourseHaven</span>
           </h1>
           <p className="text-sm text-gray-300 mt-1 text-center font-serif tracking-wide">
-            just signup to join us.
+            USER :- &nbsp; just signup to join us.
           </p>
           <form onSubmit={handleSignupData} className="flex flex-col">
             <label
@@ -126,6 +131,7 @@ const Signup = () => {
               className="w-72 rounded-sm p-1 text-black text-lg outline-none"
             />
             <p className="text-red-300 mt-1 text-center">{error}</p>
+            <Link to="/login" className="text-sm flex mx-auto text-white">all ready have an account :- &nbsp; <p className="text-sm text-blue-500 underline ">User Login</p></Link>
             <input
               type="submit"
               value="Signup"

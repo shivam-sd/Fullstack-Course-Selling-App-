@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Slider from "react-slick";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import { useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -70,8 +70,8 @@ const HomeHeroSection = () => {
           <Link to="/courses" className="border border-white p-2 rounded-sm mt-3 bg-green-700 text-white hover:bg-white hover:text-black duration-300 text-lg font-serif">
             Explore Courses
           </Link>
-          <Link to="" className="border-2 border-black p-2 rounded-sm mt-3 bg-white text-black hover:bg-green-700 hover:text-white  duration-300 text-lg font-serif">
-            Courses Videos
+          <Link to="/admin/dashboard" className="border-2 border-black p-2 rounded-sm mt-3 bg-white text-black hover:bg-green-700 hover:text-white  duration-300 text-lg font-serif">
+            Admin Dashboard
           </Link>
         </div>
       </div>

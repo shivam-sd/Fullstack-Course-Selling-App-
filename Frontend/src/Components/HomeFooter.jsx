@@ -32,11 +32,11 @@ const HomeFooter = () => {
           </div>
         </div>
 
-        <div className="second p-2 lg:mt-0 mt-3">
+        <div className="second p-2 flex flex-col lg:mt-0 mt-3">
             <h1 className="lg:text-2xl text-white font-serif text-4xl">Connects</h1>
-            <p className="text-gray-400 font-serif hover:text-white duration-300 cursor-pointer underline mt-1">Youtube- shivamthefunvlogs</p>
-            <p className="text-gray-400 font-serif hover:text-white duration-300 cursor-pointer underline mt-1">Github- shivam-sd</p>
-            <p className="text-gray-400 font-serif hover:text-white duration-300 cursor-pointer underline mt-1">Instagram- mr.shivam__06</p>
+            <Link to="https://www.youtube.com/@ShivamTheFunVlogs" className="text-gray-400 font-serif hover:text-white duration-300 cursor-pointer underline mt-1">Youtube- shivamthefunvlogs</Link>
+            <Link to="github.com/shivam-sd" className="text-gray-400 font-serif hover:text-white duration-300 cursor-pointer underline mt-1">Github- shivam-sd</Link>
+            <Link  className="text-gray-400 font-serif hover:text-white duration-300 cursor-pointer underline mt-1">Instagram- mr.shivam__06</Link>
         </div>
         <div className="third p-2 lg:mt-0 mt-3">
 

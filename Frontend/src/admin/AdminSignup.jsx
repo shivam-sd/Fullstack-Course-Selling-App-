@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { toast, Bounce } from "react-toastify";
 import AdminHeader from "./AdminHeader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 
 const AdminSignup = () => {
   const [firstname, setFirstname] = useState("");
@@ -82,14 +82,14 @@ const AdminSignup = () => {
   return (
     <div className="bg-gradient-to-r from-black to-blue-900 h-screen">
       <AdminHeader />
-      <div className="lg:mt-7 container mx-auto p-4 flex items-center justify-center mt-8">
+      <div className="lg:mt-3 container mx-auto p-4 flex items-center justify-center mt-8">
         <div className="form-main border border-yellow-500 p-6 rounded-md bg-gradient-to-tr from-yellow-900 to-blue-950 w-96">
           <h1 className="text-2xl text-center font-bold text-white">
             Welcome to{" "}
             <span className="text-orange-500 font-serif">CourseHaven</span>
           </h1>
           <p className="text-sm text-gray-300 mt-2 text-center font-serif tracking-wide">
-            Sign up to manage the dashboard.
+            Admin:- &nbsp; Sign up to manage the dashboard.
           </p>
           <form onSubmit={handleSignupData} className="flex flex-col mt-4">
             <label
@@ -148,6 +148,7 @@ const AdminSignup = () => {
             {error && (
               <p className="text-red-300 mt-2 text-center">{error}</p>
             )}
+            <Link to="/admin/login" className="text-sm flex mx-auto text-white">all ready have an account :- &nbsp; <p className="text-sm text-blue-500 underline ">Admin Login</p></Link>
             <input
               type="submit"
               value="Sign Up"

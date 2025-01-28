@@ -36,11 +36,11 @@ const Purchases = () => {
       icon: <IoSettings />,
       route: "#",
     },
-    {
-      name: "Login",
-      icon: <IoMdLogIn />,
-      route: "/login",
-    },
+    // {
+    //   name: "Login",
+    //   icon: <IoMdLogIn />,
+    //   route: "/login",
+    // },
   ];
 
   const [AllPurchases, setAllPurchases] = useState([]);
