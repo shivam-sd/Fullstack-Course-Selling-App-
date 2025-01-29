@@ -77,7 +77,7 @@ const Courses = () => {
   
   const handleLogout = async() => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/logout`);
+      const response = await axios.get(`${import.meta.env.VITE_SIGNUP_API}/users/logout`);
       console.log(response);
       localStorage.removeItem("token");
       toast.success(`${response.data.message}`, {

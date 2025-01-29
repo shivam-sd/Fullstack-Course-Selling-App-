@@ -39,7 +39,7 @@ const AdminCourseCreate = () => {
     }
 
     try{
-      const response = await axios.post("http://localhost:3000/courses/create",formData , {
+      const response = await axios.post(`${import.meta.env.VITE_SIGNUP_API}/courses/create`,formData , {
         headers:{
           Authorization: `Bearer ${token}`
         }

@@ -33,7 +33,7 @@ const AdminSignup = () => {
       };
 
       const response = await axios.post(
-        `http://localhost:3000/admin/signup`,
+        `${import.meta.env.VITE_SIGNUP_API}/admin/signup`,
         signupData,
         {
           headers: {

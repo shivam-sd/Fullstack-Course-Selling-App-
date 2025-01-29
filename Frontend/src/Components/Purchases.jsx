@@ -52,7 +52,7 @@ const Purchases = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       const response = await axios.get(
-        "http://localhost:3000/users/purchased",
+        `${import.meta.env.VITE_SIGNUP_API}/users/purchased`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ const Purchases = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/logout`);
+      const response = await axios.get(`${import.meta.env.VITE_SIGNUP_API}/users/logout`);
       console.log(response);
       toast.success(`${response.data.message}`, {
         position: "top-right",

@@ -16,7 +16,7 @@ const UpdateCourse = () => {
     useEffect(() => {
       const fetchCourseData = async() => {
       try{
-        const response = await axios.get(`http://localhost:3000/courses/${id}`);
+        const response = await axios.get(`${import.meta.env.VITE_SIGNUP_API}/courses/${id}`);
         const data = response.data;
         console.log("Aagya",data);
         setTitle(data.courseDetail.title);
@@ -62,7 +62,7 @@ const UpdateCourse = () => {
       }
       try {
         const response = await axios.put(
-          `http://localhost:3000/courses/update/${id}`,
+          `${import.meta.env.VITE_SIGNUP_API}/courses/update/${id}`,
           formData,
           {
             headers: {

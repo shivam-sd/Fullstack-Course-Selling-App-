@@ -23,7 +23,7 @@ function OurCourses() {
     const fetchCourses = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:3000/courses/allcourses`, {
+        const response = await axios.get(`${import.meta.env.VITE_SIGNUP_API}/courses/allcourses`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -52,7 +52,7 @@ function OurCourses() {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3000/courses/delete/${id}`,
+        `${import.meta.env.VITE_SIGNUP_API}/courses/delete/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -109,9 +109,9 @@ function OurCourses() {
             <div className="flex justify-between mt-4 text-gray-800 font-bold">
               <div>
                 ₹{course?.price || "0"}{" "}
-                <span className="line-through text-gray-500">₹300</span>
+                <span className="line-through text-gray-500">₹5000</span>
               </div>
-              <div className="text-green-600 text-sm mt-2">10% off</div>
+              <div className="text-green-600 text-sm mt-2">50% off</div>
             </div>
             {/* Actions */}
             <div className="flex justify-between">

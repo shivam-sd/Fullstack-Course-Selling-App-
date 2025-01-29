@@ -7,7 +7,7 @@ import axios from "axios";
 function Dashboard() {
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/admin/logout`, {
+      const response = await axios.get(`${import.meta.env.VITE_SIGNUP_API}/admin/logout`, {
         withCredentials: true,
       });
       toast.success(response.data.message);

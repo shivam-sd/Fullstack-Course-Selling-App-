@@ -29,7 +29,7 @@ const BuyCourse = () => {
       try {
         setLoading(true);
         const response = await axios.post(
-          `http://localhost:3000/courses/buy/${courseId}`,
+          `${import.meta.env.VITE_SIGNUP_API}/courses/buy/${courseId}`,
           {},
           {
             headers: {
@@ -125,7 +125,7 @@ const BuyCourse = () => {
       };
       console.log("Payment Info",paymentInfo);
      
-await axios.post("http://localhost:3000/order/" , paymentInfo , {
+await axios.post(`${import.meta.env.VITE_SIGNUP_API}/order/` , paymentInfo , {
   headers:{
     Authorization: `Bearer ${token}`
   }

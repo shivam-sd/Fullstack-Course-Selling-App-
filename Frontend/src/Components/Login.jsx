@@ -14,6 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
+    // console.log(import.meta.env.VITE_SIGNUP_API)
     if (token) {
       // console.log(token)
       setisLoggedin(true);
@@ -34,7 +35,7 @@ const Login = () => {
       console.log(LoginData);
 
       const response = await axios.post(
-        `http://localhost:3000/users/login`,
+        `${import.meta.env.VITE_SIGNUP_API}/users/login`,
         LoginData,
         {
           headers: {
@@ -71,7 +72,7 @@ const Login = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/users/logout`);
+      const response = await axios.get(`${import.meta.env.VITE_SIGNUP_API}/users/logout`);
       console.log(response);
       localStorage.removeItem("token");
       navigate("/login");

@@ -29,7 +29,7 @@ const Signup = () => {
       console.log(signupData);
 
       const response = await axios.post(
-        `http://localhost:3000/users/signup`,
+        `${import.meta.env.VITE_SIGNUP_API}/users/signup`,
         signupData,
         {
           headers: {
