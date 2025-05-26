@@ -17,11 +17,11 @@ const HomeHeader = () => {
 
       <div className="right lg:flex lg:items-center lg:justify-center lg:gap-6 flex justify-center items-center gap-5">
       
-        <Link to="/signup" className="lg:text-sm lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-500  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white">
+        <Link to="/signup" className="lg:text-sm lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black  hover:border-black hover:border-2   text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white">
           User Signup
         </Link>
         
-       <Link to="/admin/signup" className="lg:text-sm lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-20 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-300 text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-16 text-center text-white">
+       <Link to="/admin/signup" className="lg:text-sm lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-20 hover:bg-slate-200 hover:text-black duration-300 hover:border-black hover:border-2  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-16 text-center text-white">
           Admin Signup
         </Link>
        

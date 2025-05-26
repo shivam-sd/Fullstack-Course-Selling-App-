@@ -17,7 +17,7 @@ const SignupHead = () => {
       <div>
         <Link
           to="/"
-          className="lg:text-xl lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 duration-300 hover:text-black duration-300 hover:border-black hover:border-2 duration-500  text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white"
+          className="lg:text-xl lg:border lg:border-white lg:rounded-sm lg:p-1 lg:cursor-pointer lg:font-serif lg:w-24 hover:bg-slate-200 hover:text-black duration-300 hover:border-black hover:border-2   text-xl border border-white rounded-sm p-1 cursor-pointer font-serif w-20 text-center text-white"
         >
           Home
         </Link>

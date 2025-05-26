@@ -12,7 +12,7 @@ const HomeHeroSection = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       const response = await axios.get(
-        "http://localhost:3000/courses/allcourses"
+        `${import.meta.env.VITE_SIGNUP_API}/courses/allcourses`
       );
       const courses = response.data.courses;
       // console.log(courses);

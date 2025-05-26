@@ -1,12 +1,22 @@
 const mongoose = require("mongoose");
 
-function ConnectToDB(){
-    mongoose.connect(`mongodb://${process.env.CONNECT_DB}/CoursesHub`).then(() => {
-        console.log("Connected TO DB")
+// const ConnectToDB = () => {
+//     // console.log("Mongo URI:", process.env.MONGO_URI); // Debug line
+
+//     mongoose.connect(process.env.MONGO_URI)
+//         .then(() => console.log("Database Connected To The Atlas"))
+//         .catch((err) => console.log("Error in Database Connection", err));
+// };
+
+
+// module.exports = ConnectToDB;
+
+const ConnectToDB = () => {
+    mongoose.connect(`${process.env.MONGO_URI}`).then((res) => {
+        console.log("Database Connected To The Atlas");
     }).catch((err) => {
-        console.log(err);
+        console.log("Error in Database Connection" , err);
     });
-}
+};
 
 module.exports = ConnectToDB;
-
