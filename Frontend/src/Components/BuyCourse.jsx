@@ -122,7 +122,7 @@ const BuyCourse = () => {
         paymentId: paymentIntent?.id,
         amount: paymentIntent?.amount,
         status: paymentIntent?.status,
-      };
+      }; 
       console.log("Payment Info",paymentInfo);
      
 await axios.post(`${import.meta.env.VITE_SIGNUP_API}/order/` , paymentInfo , {

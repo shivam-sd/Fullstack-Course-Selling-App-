@@ -1,23 +1,30 @@
 const jwt = require("jsonwebtoken");
 
-const userMiddleware = (req,res,next) => {
-    //find authorize headers
-    const authHeader = req.headers.authorization;
-    // header check if present or not then give a error
-    if(!authHeader || !authHeader.startsWith("Bearer ")){
-        return res.status(401).json({errors:"No Token Provided"});
+const userMiddleware = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  // Check if token exists and is properly formatted
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return res.status(401).json({ errors: "No token provided or invalid format" });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    // Check if decoded token contains user ID
+    if (!decoded.id) {
+      return res.status(401).json({ errors: "Invalid token payload" });
     }
-    const token = authHeader.split(" ")[1];
-    try{
-        const decode = jwt.verify(token , process.env.JWT_SECRET);
-        req.userId = decode.id;
-        next();
-    }catch(error){
-        res.status(400).json({errors:"Invalid Token And Expired Token"});
-        console.log("Invalid Token and expired Token", error);
-    }
-}
+
+    req.userId = decoded.id;
+    next();
+  } catch (error) {
+    res.status(401).json({ errors: "Invalid or expired token" });
+  }
+};
 
 module.exports = {
-    userMiddleware,
-}
+  userMiddleware,
+};
